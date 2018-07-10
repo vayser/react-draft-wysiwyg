@@ -17,6 +17,7 @@ export default class LayoutComponent extends Component {
     config: PropTypes.object,
     currentState: PropTypes.object,
     translations: PropTypes.object,
+    wrapperId: PropTypes.string,
   };
 
   state: Object = {
@@ -24,7 +25,10 @@ export default class LayoutComponent extends Component {
   };
 
   componentDidMount(): void {
-    const editorElm = document.getElementsByClassName('DraftEditor-root');
+    const { wrapperId } = this.props;
+
+    const editorElm = document.getElementById(wrapperId).getElementsByClassName('DraftEditor-root');
+
     if (editorElm && editorElm.length > 0) {
       const editorStyles = window.getComputedStyle(editorElm[0]);
       let defaultFontSize = editorStyles.getPropertyValue('font-size');

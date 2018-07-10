@@ -16,6 +16,7 @@ export default class FontSize extends Component {
     modalHandler: PropTypes.object,
     config: PropTypes.object,
     translations: PropTypes.object,
+    wrapperId: PropTypes.string,
   };
 
   state: Object = {
@@ -85,12 +86,13 @@ export default class FontSize extends Component {
   };
 
   render(): Object {
-    const { config, translations } = this.props;
+    const { config, translations, wrapperId } = this.props;
     const { expanded, currentFontSize } = this.state;
     const FontSizeComponent = config.component || LayoutComponent;
     const fontSize = currentFontSize && Number(currentFontSize.substring(9));
     return (
       <FontSizeComponent
+        wrapperId={wrapperId}
         config={config}
         translations={translations}
         currentState={{ fontSize }}

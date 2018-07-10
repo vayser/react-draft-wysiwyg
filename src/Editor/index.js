@@ -492,7 +492,7 @@ export default class WysiwygEditor extends Component {
         onBlur={this.onWrapperBlur}
         aria-label="rdw-wrapper"
       >
-        {!toolbarHidden && (
+        {!toolbarHidden && toolbarShow && (
           <div
             className={classNames("rdw-editor-toolbar", toolbarClassName)}
             style={{
@@ -510,7 +510,7 @@ export default class WysiwygEditor extends Component {
               if (opt === "image" && uploadCallback) {
                 config.uploadCallback = uploadCallback;
               }
-              return <Control key={index} {...controlProps} config={config} />;
+              return <Control wrapperId={this.wrapperId} key={index} {...controlProps} config={config} />;
             })}
             {toolbarCustomButtons &&
               toolbarCustomButtons.map((button, index) =>

@@ -16,6 +16,7 @@ class ColorPicker extends Component {
     modalHandler: PropTypes.object,
     config: PropTypes.object,
     translations: PropTypes.object,
+    wrapperId: PropTypes.string,
   };
 
   state: Object = {
@@ -89,13 +90,14 @@ class ColorPicker extends Component {
   };
 
   render(): Object {
-    const { config, translations } = this.props;
+    const { config, translations, wrapperId } = this.props;
     const { currentColor, currentBgColor, expanded } = this.state;
     const ColorPickerComponent = config.component || LayoutComponent;
     const color = currentColor && currentColor.substring(6);
     const bgColor = currentBgColor && currentBgColor.substring(8);
     return (
       <ColorPickerComponent
+        wrapperId={wrapperId}
         config={config}
         translations={translations}
         onChange={this.toggleColor}
